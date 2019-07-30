@@ -8,14 +8,12 @@ const initialState = {
   authorFirst: "",
   authorLast: "",
   ingredients: [],
-  instructions:[],
+  instructions: [],
   recipes: []
 };
 
-
-
-export const ADD_RECIPE = 'ADD_RECIPE'
-export const ADD_INSTRUCTION = "ADD_INSTRUCTION"
+export const ADD_RECIPE = "ADD_RECIPE";
+export const ADD_INSTRUCTION = "ADD_INSTRUCTION";
 export const ADD_INGREDIENT = "ADD_INGREDIENTS";
 export const UPDATE_NAME = "UPDATE_NAME";
 export const UPDATE_CATEGORY = "UPDATE_CATEGORY";
@@ -39,16 +37,32 @@ function reducer(state = initialState, action) {
       return { ...state, authorLast: payload };
 
     case ADD_INGREDIENT:
-      const newIngredients = [...state.ingredients, payload]
+      const newIngredients = [...state.ingredients, payload];
       return { ...state, ingredients: newIngredients };
 
-      case ADD_INSTRUCTION:
-        const newInstructions = [...state.instructions,payload]
-        return{...state,instructions:newInstructions}
+    case ADD_INSTRUCTION:
+      const newInstructions = [...state.instructions, payload];
+      return { ...state, instructions: newInstructions };
 
-        case ADD_RECIPE:
-          const newRecipes = [...state.recipes,payload]
-          return{...state,recipes:newRecipes}
+    case ADD_RECIPE:
+      const {
+        name,
+        category,
+        authorfirst,
+        authorLast,
+        ingredients,
+        instructions
+      } = state;
+      const recipe = {
+        name,
+        category,
+        authorfirst,
+        authorLast,
+        ingredients,
+        instructions
+      };
+      const newRecipes = [...state.recipes, recipe];
+      return { ...state, recipes: newRecipes };
 
     default:
       return state;
