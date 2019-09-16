@@ -12,6 +12,11 @@ class Name extends Component {
       category: reduxState.category
     };
   }
+
+  // componentDidMount(){}
+
+
+  //Why is there no componentDidMount here?//
   handleNameChange(nameVal) {
     this.setState({
       name: nameVal
@@ -29,6 +34,7 @@ class Name extends Component {
       type: UPDATE_NAME,
       payload: this.state.name
     });
+    //you can chain dispatches?
     store.dispatch({
       type: UPDATE_CATEGORY,
       payload: this.state.category

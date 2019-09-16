@@ -75,6 +75,7 @@ componentDidMount(){
         <Link to="/">
           <button className='right_button' onClick={() => this.create()}>Create</button>
         </Link>
+        
       </div>
     );
   }

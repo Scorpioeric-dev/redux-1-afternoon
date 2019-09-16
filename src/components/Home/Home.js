@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import RecipeCard from "./../RecipeCard/RecipeCard";
 import "./Home.css";
-import store from './../../store'
+import store, {REMOVE_RECIPE} from './../../store'
 
 
 
@@ -15,11 +15,19 @@ class Home extends Component {
     };
   }
 
+// removeRecipe = (index) =>{
+//   const action = {
+//     type:REMOVE_RECIPE,
+//     payload:index
+//   }
+//   store.dispatch(action)
+// }
+
   render() {
-    const recipes = this.state.recipes.map((recipe, i) => {
+    const recipes = this.state.recipes.map((recipe, index) => {
       return (
         <RecipeCard
-          key={i}
+          key={index}
           name={recipe.name}
           category={recipe.category}
           authorFirst={recipe.authorFirst}
@@ -35,6 +43,7 @@ class Home extends Component {
           <button>Create New Recipe</button>
         </Link>
         <div className="card_container">{recipes}</div>
+        
       </div>
     );
   }
